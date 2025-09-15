@@ -31,13 +31,24 @@ export const Testimonials = () => {
 
   return (
     <>
-      <SEO 
+      <SEO
         title="Client Testimonials & Reviews - Professional Service Company"
         description="Read what our satisfied clients say about our web development, SEO, digital marketing, and AI automation services. Real reviews from real businesses."
       />
       <div className="min-h-screen pt-16">
         {/* Hero Section */}
-        <section className="bg-gradient-to-br from-blue-800 to-blue-900 text-white py-16">
+        <section className="relative bg-gradient-to-br from-indigo-900 via-purple-900 to-pink-800 text-white py-24 overflow-hidden">
+
+          {/* Overlay for depth */}
+          <div className="absolute inset-0 bg-black/40"></div>
+
+          {/* Animated background accents */}
+          <div className="absolute inset-0 overflow-hidden">
+            <div className="absolute -top-32 -right-32 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl animate-pulse"></div>
+            <div className="absolute -bottom-32 -left-32 w-96 h-96 bg-indigo-500/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
+            <div className="absolute top-1/2 left-1/2 w-72 h-72 bg-pink-500/10 rounded-full blur-2xl animate-ping"></div>
+          </div>
+
           <motion.div
             ref={heroAnimation.ref}
             initial={{ opacity: 0, y: 50 }}
@@ -45,14 +56,16 @@ export const Testimonials = () => {
             variants={{
               visible: { opacity: 1, y: 0, transition: { duration: 0.8 } }
             }}
-            className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center"
+            className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center"
           >
             <h1 className="text-4xl md:text-5xl font-bold mb-6">Client Testimonials</h1>
-            <p className="text-xl text-blue-200 max-w-3xl mx-auto">
+            <p className="text-xl text-gray-200 max-w-3xl mx-auto">
               Don't just take our word for it. Hear from our satisfied clients who have transformed their businesses with our services.
             </p>
           </motion.div>
         </section>
+
+
 
         {/* Stats Section */}
         <section className="py-16 bg-white">
@@ -95,7 +108,7 @@ export const Testimonials = () => {
             className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
           >
             <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold text-gray-900 mb-4">What Our Clients Say</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-4">Our Clients, Our Pride</h2>
               <p className="text-gray-600 max-w-2xl mx-auto">
                 Real feedback from real businesses that have experienced success with our services
               </p>
@@ -142,20 +155,34 @@ export const Testimonials = () => {
             }}
             className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
           >
-            <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold text-gray-900 mb-4">Trusted by Leading Companies</h2>
-              <p className="text-gray-600">We're proud to work with innovative businesses across various industries</p>
+            <div className="text-center mb-16">
+              <h2 className="text-3xl font-bold text-gray-900 mb-4">
+                Trusted by <span className="bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">Leading Companies</span>
+              </h2>
+              <p className="text-gray-600 max-w-2xl mx-auto">
+                We’re proud to partner with forward-thinking businesses across diverse industries.
+              </p>
             </div>
-            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-8">
+
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
               {clientLogos.map((company, index) => (
                 <div
                   key={index}
-                  className="bg-white p-6 rounded-lg shadow-sm flex items-center justify-center text-center border border-gray-200"
+                  className="group relative bg-white rounded-xl border border-gray-200 shadow-md hover:shadow-xl transition-all duration-500 flex items-center justify-center h-28 cursor-pointer overflow-hidden"
                 >
-                  <span className="text-gray-700 font-medium">{company}</span>
+                  <span className="text-gray-800 font-semibold tracking-wide group-hover:text-indigo-600 transition-colors duration-300">
+                    {company}
+                  </span>
+
+                  {/* Gradient overlay animation */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-indigo-500/5 via-purple-500/5 to-pink-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+
+                  {/* Bottom accent bar */}
+                  <div className="absolute bottom-0 left-0 w-0 h-1 bg-gradient-to-r from-indigo-600 to-purple-600 group-hover:w-full transition-all duration-500"></div>
                 </div>
               ))}
             </div>
+
           </motion.div>
         </section>
 

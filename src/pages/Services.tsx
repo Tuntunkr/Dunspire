@@ -4,6 +4,7 @@ import { useScrollAnimation } from '../hooks/useScrollAnimation';
 import { services } from '../data/services';
 import { PricingCard } from '../components/UI/PricingCard';
 import { SEO } from '../components/SEO';
+import { CheckCircleIcon } from 'lucide-react';
 
 export const Services = () => {
   const [selectedService, setSelectedService] = useState(services[0]);
@@ -36,13 +37,24 @@ export const Services = () => {
 
   return (
     <>
-      <SEO 
+      <SEO
         title="Our Services - Web Development, SEO, Digital Marketing & More"
         description="Professional web development, SEO marketing, UI/UX design, digital marketing, and AI automation services. Choose from our Basic, Advanced, or Premium plans."
       />
+
       <div className="min-h-screen pt-16">
         {/* Hero Section */}
-        <section className="bg-gradient-to-br from-blue-800 to-blue-900 text-white py-16">
+        <section className="relative bg-gradient-to-br from-indigo-900 via-purple-900 to-pink-800 text-white py-24 overflow-hidden">
+          {/* Overlay for depth */}
+          <div className="absolute inset-0 bg-black/40"></div>
+
+          {/* Animated background accents */}
+          <div className="absolute inset-0 overflow-hidden">
+            <div className="absolute -top-32 -right-32 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl animate-pulse"></div>
+            <div className="absolute -bottom-32 -left-32 w-96 h-96 bg-indigo-500/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
+            <div className="absolute top-1/2 left-1/2 w-72 h-72 bg-pink-500/10 rounded-full blur-2xl animate-ping"></div>
+          </div>
+
           <motion.div
             ref={heroAnimation.ref}
             initial={{ opacity: 0, y: 50 }}
@@ -50,14 +62,16 @@ export const Services = () => {
             variants={{
               visible: { opacity: 1, y: 0, transition: { duration: 0.8 } }
             }}
-            className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center"
+            className="relative max-w-7xl mx-auto px-6 lg:px-8 text-center"
           >
             <h1 className="text-4xl md:text-5xl font-bold mb-6">Our Services</h1>
-            <p className="text-xl text-blue-200 max-w-3xl mx-auto">
+            <p className="text-xl text-gray-200 max-w-3xl mx-auto">
               Comprehensive digital solutions designed to help your business grow, from web development to AI automation.
             </p>
           </motion.div>
         </section>
+
+
 
         {/* Services Navigation */}
         <section className="py-8 bg-white border-b">
@@ -67,11 +81,10 @@ export const Services = () => {
                 <button
                   key={service.id}
                   onClick={() => setSelectedService(service)}
-                  className={`px-6 py-3 rounded-full font-medium transition-all duration-200 ${
-                    selectedService.id === service.id
-                      ? 'bg-orange-500 text-white shadow-lg'
-                      : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                  }`}
+                  className={`px-6 py-3 rounded-full font-medium transition-all duration-200 ${selectedService.id === service.id
+                    ? 'bg-gradient-to-r from-yellow-400 to-orange-500 text-white shadow-lg'
+                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                    }`}
                 >
                   <span className="mr-2">{service.icon}</span>
                   {service.name}
@@ -108,7 +121,7 @@ export const Services = () => {
                     key={index}
                     className="bg-white p-4 rounded-lg shadow-sm text-center border border-gray-200"
                   >
-                    <div className="text-2xl mb-2">✅</div>
+                    <CheckCircleIcon className="w-8 h-8 text-green-500 mx-auto mb-2" />
                     <p className="text-sm font-medium text-gray-700">{feature}</p>
                   </div>
                 ))}
