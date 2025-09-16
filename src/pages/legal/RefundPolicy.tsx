@@ -7,7 +7,7 @@ const sections = [
     title: "General Policy",
     content: (
       <p>
-        Dunspire.in is committed to providing high-quality digital services. If
+        dunspire is committed to providing high-quality digital services. If
         you are not satisfied with our services, we offer refunds and
         cancellations under specific conditions outlined below.
       </p>
@@ -162,7 +162,7 @@ const sections = [
     title: "Force Majeure",
     content: (
       <p>
-        Dunspire.in shall not be liable for any delays or inability to perform
+        dunspire shall not be liable for any delays or inability to perform
         due to circumstances beyond our reasonable control, including but not
         limited to natural disasters, government actions, or technical failures
         of third-party services.
@@ -197,8 +197,8 @@ export const RefundPolicy: React.FC = () => {
   return (
     <>
       <SEO
-        title="Refund & Cancellation Policy - Dunspire.in"
-        description="Learn about Dunspire.in's refund and cancellation policy for web development, app development, SEO, digital marketing, and other professional services."
+        title="Refund & Cancellation Policy - dunspire"
+        description="Learn about dunspire's refund and cancellation policy for web development, app development, SEO, digital marketing, and other professional services."
       />
 
       <div className="min-h-screen pt-16 bg-gray-50">
@@ -215,7 +215,7 @@ export const RefundPolicy: React.FC = () => {
             <p className="text-lg text-gray-200">Last updated: January 1, 2025</p>
             <p className="text-lg text-gray-200 mt-6">
               Our refund and cancellation terms are designed to be transparent and
-              fair, covering all services offered by Dunspire.in.
+              fair, covering all services offered by dunspire.
             </p>
           </motion.div>
         </section>

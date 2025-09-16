@@ -14,7 +14,7 @@ export const PricingCard = ({ plan, serviceId }: PricingCardProps) => {
       key: 'rzp_test_your_key_here', // Replace with your Razorpay key
       amount: plan.price * 100, // Amount in paise
       currency: 'INR',
-      name: 'Dunspire.in',
+      name: 'dunspire',
       description: `${plan.name} Plan - ${serviceId}`,
       image: '/logo.png',
       handler: function (response: any) {

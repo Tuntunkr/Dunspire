@@ -14,7 +14,7 @@ export const Footer = () => {
                 <span className="text-white font-bold text-xl">D</span>
               </div>
               <div className="flex flex-col">
-                <span className="font-bold text-xl">Dunspire.in</span>
+                <span className="font-bold text-xl">dunspire</span>
                 <span className="text-xs text-gray-400">Digital Solutions</span>
               </div>
             </div>
@@ -142,7 +142,7 @@ export const Footer = () => {
               </Link>
             </div>
             <p className="text-gray-400 text-sm">
-              © 2025 Dunspire.in. All rights reserved.
+              © 2025 dunspire. All rights reserved.
             </p>
           </div>
         </div>
