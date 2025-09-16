@@ -21,6 +21,7 @@ import { PrivacyPolicy } from './pages/legal/PrivacyPolicy';
 import { TermsConditions } from './pages/legal/TermsConditions';
 import { RefundPolicy } from './pages/legal/RefundPolicy';
 import { CancellationPolicy } from './pages/legal/CancellationPolicy';
+import { ScrollToTop } from './pages/ScrollToTop';
 
 function App() {
   useEffect(() => {
@@ -60,7 +61,9 @@ function App() {
   return (
     <ErrorBoundary>
       <HelmetProvider>
+
         <Router>
+        <ScrollToTop />
           <div className="min-h-screen bg-white">
             <Header />
             <main>
