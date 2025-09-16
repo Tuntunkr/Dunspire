@@ -5,8 +5,8 @@ export const RefundPolicy = () => {
   return (
     <>
       <SEO 
-        title="Refund & Cancellation Policy - Dunspire.in"
-        description="Learn about Dunspire.in's refund and cancellation policy for web development, app development, SEO, digital marketing, and other professional services."
+        title="Refund & Cancellation Policy - Dunspire"
+        description="Learn about Dunspire's refund and cancellation policy for web development, app development, SEO, digital marketing, and other professional services."
       />
       <div className="min-h-screen pt-16 bg-gray-50">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
@@ -18,7 +18,7 @@ export const RefundPolicy = () => {
               <section className="mb-8">
                 <h2 className="text-2xl font-bold text-gray-900 mb-4">General Policy</h2>
                 <p className="text-gray-700 leading-relaxed">
-                  Dunspire.in is committed to providing high-quality digital services. If you are not satisfied with our services, we offer refunds and cancellations under specific conditions outlined below.
+                  Dunspire is committed to providing high-quality digital services. If you are not satisfied with our services, we offer refunds and cancellations under specific conditions outlined below.
                 </p>
               </section>
 
@@ -167,7 +167,7 @@ export const RefundPolicy = () => {
               <section className="mb-8">
                 <h2 className="text-2xl font-bold text-gray-900 mb-4">Force Majeure</h2>
                 <p className="text-gray-700 leading-relaxed">
-                  Dunspire.in shall not be liable for any delays or inability to perform due to circumstances beyond our reasonable control, including but not limited to natural disasters, government actions, or technical failures of third-party services.
+                  Dunspire shall not be liable for any delays or inability to perform due to circumstances beyond our reasonable control, including but not limited to natural disasters, government actions, or technical failures of third-party services.
                 </p>
               </section>
 

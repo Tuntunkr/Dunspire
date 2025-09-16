@@ -14,14 +14,14 @@ export const Footer = () => {
                 <span className="text-white font-bold text-xl">D</span>
               </div>
               <div className="flex flex-col">
-                <span className="font-bold text-xl">Dunspire.in</span>
+                <span className="font-bold text-xl">Dunspire</span>
                 <span className="text-xs text-gray-400">Digital Solutions</span>
               </div>
             </div>
             <p className="text-gray-300 mb-6 leading-relaxed">
               Empowering businesses with cutting-edge digital solutions. From web development to AI automation, we transform ideas into reality.
             </p>
-            <div className="flex space-x-4">
+            {/* <div className="flex space-x-4">
               <a href="#" className="text-gray-300 hover:text-indigo-400 transition-colors">
                 <Facebook className="w-6 h-6" />
               </a>
@@ -34,7 +34,7 @@ export const Footer = () => {
               <a href="#" className="text-gray-300 hover:text-indigo-400 transition-colors">
                 <Instagram className="w-6 h-6" />
               </a>
-            </div>
+            </div> */}
           </div>
 
           {/* Quick Links */}
@@ -142,7 +142,7 @@ export const Footer = () => {
               </Link>
             </div>
             <p className="text-gray-400 text-sm">
-              © 2025 Dunspire.in. All rights reserved.
+              © 2025 Dunspire. All rights reserved.
             </p>
           </div>
         </div>

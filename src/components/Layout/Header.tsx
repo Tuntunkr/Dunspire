@@ -37,7 +37,7 @@ export const Header = () => {
               <span className="text-white font-bold text-xl">D</span>
             </div>
             <div className="flex flex-col">
-              <span className="font-bold text-xl text-gray-900">Dunspire.in</span>
+              <span className="font-bold text-xl text-gray-900">Dunspire</span>
               <span className="text-xs text-gray-500 -mt-1">Digital Solutions</span>
             </div>
           </Link>

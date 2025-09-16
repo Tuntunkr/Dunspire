@@ -91,7 +91,7 @@ export const Contact = () => {
     try {
       // Create email content
       const emailContent = `
-        New Contact Form Submission from Dunspire.in
+        New Contact Form Submission from Dunspire
         
         Name: ${formData.name}
         Email: ${formData.email}
@@ -156,8 +156,8 @@ export const Contact = () => {
   return (
     <>
       <SEO
-        title="Contact Dunspire.in - Get Your Free Consultation Today"
-        description="Contact Dunspire.in for professional web development, app development, SEO, digital marketing, and AI automation services. Get your free consultation and custom quote."
+        title="Contact Dunspire - Get Your Free Consultation Today"
+        description="Contact Dunspire for professional web development, app development, SEO, digital marketing, and AI automation services. Get your free consultation and custom quote."
         keywords="contact dunspire, web development consultation, digital marketing services, Muzaffarpur Bihar"
       />
 

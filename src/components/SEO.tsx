@@ -10,14 +10,14 @@ interface SEOProps {
 }
 
 export const SEO = ({ 
-  title = 'Dunspire.in - Professional Digital Solutions & Web Development Services',
-  description = 'Transform your business with Dunspire.in\'s expert web development, app development, SEO, digital marketing, UI/UX design, AI automation, and cloud solutions. Based in Muzaffarpur, Bihar.',
+  title = 'Dunspire - Professional Digital Solutions & Web Development Services',
+  description = 'Transform your business with Dunspire\'s expert web development, app development, SEO, digital marketing, UI/UX design, AI automation, and cloud solutions. Based in Muzaffarpur, Bihar.',
   keywords = 'web development, app development, SEO, digital marketing, UI/UX design, AI automation, cloud solutions, Muzaffarpur, Bihar, India, Dunspire',
   image = '/og-image.jpg',
   url = typeof window !== 'undefined' ? window.location.href : '',
   type = 'website'
 }: SEOProps) => {
-  const fullTitle = title.includes('Dunspire.in') ? title : `${title} | Dunspire.in`;
+  const fullTitle = title.includes('Dunspire') ? title : `${title} | Dunspire`;
 
   return (
     <Helmet>
@@ -47,7 +47,7 @@ export const SEO = ({
         {JSON.stringify({
           "@context": "https://schema.org",
           "@type": "Organization",
-          "name": "Dunspire.in",
+          "name": "Dunspire",
           "url": url,
           "logo": "/logo.png",
           "description": description,

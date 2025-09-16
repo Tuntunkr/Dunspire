@@ -1,6 +1,6 @@
-# Dunspire.in - Professional Digital Solutions
+# Dunspire - Professional Digital Solutions
 
-A modern, responsive static website built with React, TypeScript, and Tailwind CSS for Dunspire.in digital services company.
+A modern, responsive static website built with React, TypeScript, and Tailwind CSS for Dunspire digital services company.
 
 ## 🚀 Features
 
@@ -105,11 +105,11 @@ The website includes Progressive Web App features:
 
 ## 📄 License
 
-This project is proprietary to Dunspire.in. All rights reserved.
+This project is proprietary to Dunspire. All rights reserved.
 
 ## 📞 Support
 
 For technical support or questions:
 - Email: dunbillbusiness@gmail.com
 - Phone: +91 99428 24657
-- Website: [Dunspire.in](https://dunspire.in)
+- Website: [Dunspire](https://Dunspire)
