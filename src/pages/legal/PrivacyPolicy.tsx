@@ -1,109 +1,174 @@
-import React from 'react';
-import { SEO } from '../../components/SEO';
+import React from "react";
+import { motion } from "framer-motion";
+import { SEO } from "../../components/SEO";
 
-export const PrivacyPolicy = () => {
+const sections = [
+  {
+    title: "1. Information We Collect",
+    content: (
+      <>
+        <p className="mb-4">
+          We may collect the following types of information:
+        </p>
+        <ul className="list-disc list-inside space-y-2">
+          <li>
+            <strong>Personal Information:</strong> Name, email address, phone
+            number, company name, billing details.
+          </li>
+          <li>
+            <strong>Technical Information:</strong> IP address, device
+            information, browser type, operating system.
+          </li>
+          <li>
+            <strong>Usage Data:</strong> How you interact with our websites,
+            applications, and games.
+          </li>
+          <li>
+            <strong>Project Data (B2B Clients):</strong> Source code,
+            documentation, and related information provided for
+            development/cybersecurity projects.
+          </li>
+        </ul>
+      </>
+    ),
+  },
+  {
+    title: "2. How We Use Your Information",
+    content: (
+      <ul className="list-disc list-inside space-y-2">
+        <li>To provide, operate, and improve our services.</li>
+        <li>To process payments and send invoices.</li>
+        <li>To enhance security and detect/prevent fraud.</li>
+        <li>To communicate updates, offers, or important notices.</li>
+        <li>To conduct analytics for performance and product improvement.</li>
+      </ul>
+    ),
+  },
+  {
+    title: "3. Data Sharing & Disclosure",
+    content: (
+      <ul className="list-disc list-inside space-y-2">
+        <li>
+          <strong>Service Providers:</strong> Payment gateways, hosting
+          providers, and analytics tools.
+        </li>
+        <li>
+          <strong>Legal Authorities:</strong> When required by law or to protect
+          our legal rights.
+        </li>
+        <li>
+          <strong>Business Transfers:</strong> In case of mergers, acquisitions,
+          or restructuring.
+        </li>
+      </ul>
+    ),
+  },
+  {
+    title: "4. Data Security",
+    content: (
+      <p>
+        We implement industry-standard security practices including encryption,
+        firewalls, and access control to protect data. However, no method of
+        transmission over the Internet is 100% secure, and we cannot guarantee
+        absolute security.
+      </p>
+    ),
+  },
+  {
+    title: "5. Data Retention",
+    content: (
+      <p>
+        We retain personal and project data only as long as necessary to fulfill
+        contractual obligations, comply with legal requirements, resolve
+        disputes, and enforce agreements.
+      </p>
+    ),
+  },
+  {
+    title: "6. Your Rights",
+    content: (
+      <>
+        <p className="mb-4">Depending on your location, you may have rights to:</p>
+        <ul className="list-disc list-inside space-y-2">
+          <li>Access, correct, or delete your data.</li>
+          <li>Withdraw consent for processing.</li>
+          <li>Opt-out of marketing communications.</li>
+          <li>Request a copy of your stored information.</li>
+        </ul>
+        <p className="mt-4">
+          To exercise these rights, contact us at{" "}
+          <span className="font-semibold">[Insert Official Email]</span>.
+        </p>
+      </>
+    ),
+  },
+  {
+    title: "7. Children’s Privacy",
+    content: (
+      <p>
+        Our services, including game development, are not directed to children
+        under 13. We do not knowingly collect personal data from children.
+      </p>
+    ),
+  },
+  {
+    title: "8. Changes to This Policy",
+    content: (
+      <p>
+        We may update this Privacy Policy periodically. Any changes will be
+        posted on this page with a revised <strong>Effective Date</strong>.
+      </p>
+    ),
+  },
+];
+
+export const PrivacyPolicy: React.FC = () => {
   return (
     <>
-      <SEO 
-        title="Privacy Policy - Professional Service Company"
-        description="Read our privacy policy to understand how we collect, use, and protect your personal information when you use our services."
+      <SEO
+        title="Privacy Policy - Dunbill Technologies Pvt. Ltd."
+        description="Learn how Dunbill Technologies collects, uses, and protects your personal information across our software, cybersecurity, and game development services."
       />
+
       <div className="min-h-screen pt-16 bg-gray-50">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-          <div className="bg-white rounded-xl shadow-lg p-8">
-            <h1 className="text-3xl font-bold text-gray-900 mb-8">Privacy Policy</h1>
-            <p className="text-sm text-gray-600 mb-8">Last updated: January 1, 2025</p>
+        {/* Hero Section */}
+        <section className="relative bg-gradient-to-br from-indigo-900 via-purple-900 to-pink-800 text-white py-20">
+          <div className="absolute inset-0 bg-black/40"></div>
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="relative max-w-4xl mx-auto px-4 text-center"
+          >
+            <h1 className="text-4xl md:text-5xl font-bold mb-4">Privacy Policy</h1>
+            <p className="text-lg text-gray-200">
+              At Dunbill Technologies Pvt. Ltd. (“Company,” “we,” “our,” or “us”),
+              we respect your privacy and are committed to protecting the personal
+              information you share with us.
+            </p>
+          </motion.div>
+        </section>
 
-            <div className="prose prose-gray max-w-none">
-              <section className="mb-8">
-                <h2 className="text-2xl font-bold text-gray-900 mb-4">Introduction</h2>
-                <p className="text-gray-700 leading-relaxed">
-                  Professional Services Company ("we," "our," or "us") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website or use our services.
-                </p>
-              </section>
-
-              <section className="mb-8">
-                <h2 className="text-2xl font-bold text-gray-900 mb-4">Information We Collect</h2>
-                <h3 className="text-xl font-semibold text-gray-800 mb-3">Personal Information</h3>
-                <p className="text-gray-700 leading-relaxed mb-4">
-                  We may collect personal information that you voluntarily provide to us when you:
-                </p>
-                <ul className="list-disc list-inside text-gray-700 mb-6">
-                  <li>Fill out contact forms or request quotes</li>
-                  <li>Subscribe to our newsletter</li>
-                  <li>Create an account or make a purchase</li>
-                  <li>Contact us via email, phone, or WhatsApp</li>
-                </ul>
-
-                <h3 className="text-xl font-semibold text-gray-800 mb-3">Automatically Collected Information</h3>
-                <p className="text-gray-700 leading-relaxed">
-                  We may automatically collect certain information about your device and usage patterns, including IP address, browser type, operating system, and pages visited.
-                </p>
-              </section>
-
-              <section className="mb-8">
-                <h2 className="text-2xl font-bold text-gray-900 mb-4">How We Use Your Information</h2>
-                <p className="text-gray-700 leading-relaxed mb-4">
-                  We use the information we collect for various purposes, including:
-                </p>
-                <ul className="list-disc list-inside text-gray-700">
-                  <li>Providing and maintaining our services</li>
-                  <li>Processing payments and transactions</li>
-                  <li>Communicating with you about our services</li>
-                  <li>Sending newsletters and marketing materials (with consent)</li>
-                  <li>Improving our website and services</li>
-                  <li>Complying with legal obligations</li>
-                </ul>
-              </section>
-
-              <section className="mb-8">
-                <h2 className="text-2xl font-bold text-gray-900 mb-4">Information Sharing</h2>
-                <p className="text-gray-700 leading-relaxed">
-                  We do not sell, trade, or rent your personal information to third parties. We may share your information only in the following circumstances:
-                </p>
-                <ul className="list-disc list-inside text-gray-700 mt-4">
-                  <li>With service providers who assist us in operating our business</li>
-                  <li>When required by law or to protect our rights</li>
-                  <li>In connection with a business transfer or merger</li>
-                  <li>With your explicit consent</li>
-                </ul>
-              </section>
-
-              <section className="mb-8">
-                <h2 className="text-2xl font-bold text-gray-900 mb-4">Data Security</h2>
-                <p className="text-gray-700 leading-relaxed">
-                  We implement appropriate technical and organizational security measures to protect your personal information against unauthorized access, alteration, disclosure, or destruction.
-                </p>
-              </section>
-
-              <section className="mb-8">
-                <h2 className="text-2xl font-bold text-gray-900 mb-4">Your Rights</h2>
-                <p className="text-gray-700 leading-relaxed mb-4">
-                  You have the right to:
-                </p>
-                <ul className="list-disc list-inside text-gray-700">
-                  <li>Access your personal information</li>
-                  <li>Correct inaccurate information</li>
-                  <li>Request deletion of your information</li>
-                  <li>Object to processing of your information</li>
-                  <li>Unsubscribe from marketing communications</li>
-                </ul>
-              </section>
-
-              <section className="mb-8">
-                <h2 className="text-2xl font-bold text-gray-900 mb-4">Contact Us</h2>
-                <p className="text-gray-700 leading-relaxed">
-                  If you have any questions about this Privacy Policy, please contact us at:
-                </p>
-                <div className="mt-4 text-gray-700">
-                  <p>Email: privacy@proservices.com</p>
-                  <p>Phone: +1 (234) 567-8900</p>
-                  <p>Address: 123 Business Ave, City, ST 12345</p>
-                </div>
-              </section>
-            </div>
+        {/* Content Section */}
+        <section className="py-16">
+          <div className="max-w-5xl mx-auto px-4 space-y-12">
+            {sections.map((sec, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                viewport={{ once: true }}
+                className="bg-white p-6 rounded-xl shadow-md border"
+              >
+                <h2 className="text-2xl font-semibold text-gray-900 mb-4">
+                  {sec.title}
+                </h2>
+                <div className="text-gray-700 leading-relaxed">{sec.content}</div>
+              </motion.div>
+            ))}
           </div>
-        </div>
+        </section>
       </div>
     </>
   );
