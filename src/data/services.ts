@@ -40,7 +40,7 @@ export const services: Service[] = [
           'Advanced SEO',
           'Blog Integration',
           '90 Days Support',
-          'Payment Gateway',
+          'Integrated Payment Solutions',
           'Analytics Setup',
           'Live Chat Integration'
         ]

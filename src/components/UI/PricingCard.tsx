@@ -97,11 +97,12 @@ export const PricingCard = ({ plan, serviceId }: PricingCardProps) => {
         {getCtaText()}
       </button>
 
-      <div className="mt-4 text-center">
+      {/* <div className="mt-4 text-center">
         <p className="text-xs text-gray-500">
-          Secure payment via Razorpay
+          Fast, secure, and transparent online payments.<br/>
+          Trusted by leading businesses for seamless project delivery.
         </p>
-      </div>
+      </div> */}
     </motion.div>
   );
 };
