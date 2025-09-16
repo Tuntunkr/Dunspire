@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
-import { TestimonialSlider } from '../components/UI/TestimonialSlider';
 import { SEO } from '../components/SEO';
 import { 
   Rocket, 
