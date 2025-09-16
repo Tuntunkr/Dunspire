@@ -1,6 +1,7 @@
-import React, { useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
+import { ErrorBoundary } from './components/ErrorBoundary';
 
 // Layout Components
 import { Header } from './components/Layout/Header';
@@ -23,8 +24,8 @@ import { CancellationPolicy } from './pages/legal/CancellationPolicy';
 
 function App() {
   useEffect(() => {
-    // Register service worker for PWA
-    if ('serviceWorker' in navigator) {
+    // Register service worker only in production to avoid dev caching
+    if (import.meta.env.PROD && 'serviceWorker' in navigator) {
       window.addEventListener('load', () => {
         navigator.serviceWorker.register('/sw.js')
           .then((registration) => {
@@ -57,29 +58,31 @@ function App() {
   }, []);
 
   return (
-    <HelmetProvider>
-      <Router>
-        <div className="min-h-screen bg-white">
-          <Header />
-          <main>
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/about" element={<About />} />
-              <Route path="/services" element={<Services />} />
-              <Route path="/testimonials" element={<Testimonials />} />
-              <Route path="/contact" element={<Contact />} />
-              <Route path="/blog" element={<Blog />} />
-              <Route path="/privacy" element={<PrivacyPolicy />} />
-              <Route path="/terms" element={<TermsConditions />} />
-              <Route path="/refund" element={<RefundPolicy />} />
-              <Route path="/cancellation" element={<CancellationPolicy />} />
-            </Routes>
-          </main>
-          <Footer />
-          <FloatingActions />
-        </div>
-      </Router>
-    </HelmetProvider>
+    <ErrorBoundary>
+      <HelmetProvider>
+        <Router>
+          <div className="min-h-screen bg-white">
+            <Header />
+            <main>
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/about" element={<About />} />
+                <Route path="/services" element={<Services />} />
+                <Route path="/testimonials" element={<Testimonials />} />
+                <Route path="/contact" element={<Contact />} />
+                <Route path="/blog" element={<Blog />} />
+                <Route path="/privacy" element={<PrivacyPolicy />} />
+                <Route path="/terms" element={<TermsConditions />} />
+                <Route path="/refund" element={<RefundPolicy />} />
+                <Route path="/cancellation" element={<CancellationPolicy />} />
+              </Routes>
+            </main>
+            <Footer />
+            <FloatingActions />
+          </div>
+        </Router>
+      </HelmetProvider>
+    </ErrorBoundary>
   );
 }
 

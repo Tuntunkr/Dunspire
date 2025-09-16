@@ -2,6 +2,14 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
 import { SEO } from '../components/SEO';
+import { Phone, Mail, MessageCircle, MapPin } from 'lucide-react';
+
+interface FormErrors {
+  name?: string;
+  email?: string;
+  phone?: string;
+  message?: string;
+}
 
 export const Contact = () => {
   const [formData, setFormData] = useState({
@@ -13,22 +21,72 @@ export const Contact = () => {
     message: ''
   });
 
+  const [errors, setErrors] = useState<FormErrors>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
 
   const heroAnimation = useScrollAnimation();
   const formAnimation = useScrollAnimation();
   const contactAnimation = useScrollAnimation();
 
+  const validateForm = (): boolean => {
+    const newErrors: FormErrors = {};
+
+    // Name validation
+    if (!formData.name.trim()) {
+      newErrors.name = 'Name is required';
+    } else if (formData.name.trim().length < 2) {
+      newErrors.name = 'Name must be at least 2 characters';
+    }
+
+    // Email validation
+    if (!formData.email.trim()) {
+      newErrors.email = 'Email is required';
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+      newErrors.email = 'Please enter a valid email address';
+    }
+
+    // Phone validation (optional but if provided, should be valid)
+    if (formData.phone && !/^[\+]?[0-9\s\-\(\)]{10,}$/.test(formData.phone)) {
+      newErrors.phone = 'Please enter a valid phone number';
+    }
+
+    // Message validation
+    if (!formData.message.trim()) {
+      newErrors.message = 'Message is required';
+    } else if (formData.message.trim().length < 10) {
+      newErrors.message = 'Message must be at least 10 characters';
+    }
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    const { name, value } = e.target;
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value
+      [name]: value
     });
+
+    // Clear error when user starts typing
+    if (errors[name as keyof FormErrors]) {
+      setErrors({
+        ...errors,
+        [name]: undefined
+      });
+    }
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    if (!validateForm()) {
+      return;
+    }
+
     setIsSubmitting(true);
+    setSubmitStatus('idle');
 
     try {
       // Create email content
@@ -48,7 +106,7 @@ export const Contact = () => {
       const mailtoLink = `mailto:dunbillbusiness@gmail.com?subject=New Contact Form Submission&body=${encodeURIComponent(emailContent)}`;
       window.location.href = mailtoLink;
 
-      alert('Thank you for your message! We\'ll get back to you within 24 hours.');
+      setSubmitStatus('success');
       setFormData({
         name: '',
         email: '',
@@ -58,7 +116,7 @@ export const Contact = () => {
         message: ''
       });
     } catch (error) {
-      alert('There was an error sending your message. Please try again or contact us directly.');
+      setSubmitStatus('error');
     } finally {
       setIsSubmitting(false);
     }
@@ -66,28 +124,28 @@ export const Contact = () => {
 
   const contactMethods = [
     {
-      icon: '📞',
+      icon: Phone,
       title: 'Phone',
       description: 'Call us for immediate assistance',
       value: '+91 99428 24657',
       action: 'tel:+919942824657'
     },
     {
-      icon: '✉️',
+      icon: Mail,
       title: 'Email',
       description: 'Send us your questions',
       value: 'dunbillbusiness@gmail.com',
       action: 'mailto:dunbillbusiness@gmail.com'
     },
     {
-      icon: '💬',
+      icon: MessageCircle,
       title: 'WhatsApp',
       description: 'Chat with us instantly',
       value: 'WhatsApp Chat',
       action: 'https://wa.me/919942824657'
     },
     {
-      icon: '📍',
+      icon: MapPin,
       title: 'Address',
       description: 'Visit our office',
       value: 'Rohua Appuch, Mushari Rohua, Mushari Farm, Muzaffarpur, Bihar - 842002',
@@ -97,14 +155,26 @@ export const Contact = () => {
 
   return (
     <>
-      <SEO 
+      <SEO
         title="Contact Dunspire.in - Get Your Free Consultation Today"
         description="Contact Dunspire.in for professional web development, app development, SEO, digital marketing, and AI automation services. Get your free consultation and custom quote."
         keywords="contact dunspire, web development consultation, digital marketing services, Muzaffarpur Bihar"
       />
+
       <div className="min-h-screen pt-16">
         {/* Hero Section */}
-        <section className="bg-gradient-to-br from-indigo-800 to-purple-900 text-white py-20">
+        <section className="relative bg-gradient-to-br from-indigo-900 via-purple-900 to-pink-800 text-white py-24 overflow-hidden">
+
+          {/* Overlay for depth */}
+          <div className="absolute inset-0 bg-black/40"></div>
+
+          {/* Animated glowing circles */}
+          <div className="absolute inset-0 overflow-hidden">
+            <div className="absolute -top-32 -right-32 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl animate-pulse"></div>
+            <div className="absolute -bottom-32 -left-32 w-96 h-96 bg-pink-500/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
+            <div className="absolute top-1/2 left-1/2 w-72 h-72 bg-indigo-500/10 rounded-full blur-2xl animate-ping"></div>
+          </div>
+
           <motion.div
             ref={heroAnimation.ref}
             initial={{ opacity: 0, y: 50 }}
@@ -112,14 +182,18 @@ export const Contact = () => {
             variants={{
               visible: { opacity: 1, y: 0, transition: { duration: 0.8 } }
             }}
-            className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center"
+            className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center"
           >
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">Get in Touch</h1>
-            <p className="text-xl text-indigo-200 max-w-3xl mx-auto">
-              Ready to transform your business? Contact us today for a free consultation and discover how we can help you achieve your digital goals.
+            <h1 className="text-4xl md:text-5xl font-bold mb-6 drop-shadow-lg">
+              Get in Touch
+            </h1>
+            <p className="text-xl text-gray-200 max-w-3xl mx-auto leading-relaxed">
+              Ready to transform your business? Contact us today for a free consultation and
+              discover how we can help you achieve your digital goals.
             </p>
           </motion.div>
         </section>
+
 
         {/* Contact Methods */}
         <section className="py-20 bg-white">
@@ -143,7 +217,9 @@ export const Contact = () => {
                   className="text-center p-8 bg-gradient-to-br from-gray-50 to-white rounded-2xl hover:shadow-2xl transition-all duration-300 border border-gray-100"
                   whileHover={{ y: -8, scale: 1.02 }}
                 >
-                  <div className="text-5xl mb-6">{method.icon}</div>
+                  <div className="text-5xl mb-6 text-indigo-600">
+                    <method.icon className="w-12 h-12 mx-auto" />
+                  </div>
                   <h3 className="text-xl font-bold text-gray-900 mb-3">{method.title}</h3>
                   <p className="text-gray-600 mb-4">{method.description}</p>
                   <a
@@ -186,9 +262,13 @@ export const Contact = () => {
                         required
                         value={formData.name}
                         onChange={handleChange}
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all duration-200"
+                        className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all duration-200 ${errors.name ? 'border-red-500 bg-red-50' : 'border-gray-300'
+                          }`}
                         placeholder="Your full name"
                       />
+                      {errors.name && (
+                        <p className="mt-1 text-sm text-red-600">{errors.name}</p>
+                      )}
                     </div>
                     <div>
                       <label htmlFor="email" className="block text-sm font-semibold text-gray-700 mb-2">
@@ -201,12 +281,16 @@ export const Contact = () => {
                         required
                         value={formData.email}
                         onChange={handleChange}
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all duration-200"
+                        className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all duration-200 ${errors.email ? 'border-red-500 bg-red-50' : 'border-gray-300'
+                          }`}
                         placeholder="your@email.com"
                       />
+                      {errors.email && (
+                        <p className="mt-1 text-sm text-red-600">{errors.email}</p>
+                      )}
                     </div>
                   </div>
-                  
+
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
                       <label htmlFor="phone" className="block text-sm font-semibold text-gray-700 mb-2">
@@ -218,9 +302,13 @@ export const Contact = () => {
                         name="phone"
                         value={formData.phone}
                         onChange={handleChange}
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all duration-200"
+                        className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all duration-200 ${errors.phone ? 'border-red-500 bg-red-50' : 'border-gray-300'
+                          }`}
                         placeholder="+91 99428 24657"
                       />
+                      {errors.phone && (
+                        <p className="mt-1 text-sm text-red-600">{errors.phone}</p>
+                      )}
                     </div>
                     <div>
                       <label htmlFor="service" className="block text-sm font-semibold text-gray-700 mb-2">
@@ -274,17 +362,51 @@ export const Contact = () => {
                       required
                       value={formData.message}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all duration-200"
+                      className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all duration-200 ${errors.message ? 'border-red-500 bg-red-50' : 'border-gray-300'
+                        }`}
                       placeholder="Tell us about your project..."
                     ></textarea>
+                    {errors.message && (
+                      <p className="mt-1 text-sm text-red-600">{errors.message}</p>
+                    )}
                   </div>
+
+                  {/* Status Messages */}
+                  {submitStatus === 'success' && (
+                    <div className="bg-green-50 border border-green-200 rounded-lg p-4">
+                      <div className="flex items-center">
+                        <span className="text-green-600 text-xl mr-3">✅</span>
+                        <p className="text-green-800 font-medium">
+                          Thank you for your message! We'll get back to you within 24 hours.
+                        </p>
+                      </div>
+                    </div>
+                  )}
+
+                  {submitStatus === 'error' && (
+                    <div className="bg-red-50 border border-red-200 rounded-lg p-4">
+                      <div className="flex items-center">
+                        <span className="text-red-600 text-xl mr-3">❌</span>
+                        <p className="text-red-800 font-medium">
+                          There was an error sending your message. Please try again or contact us directly.
+                        </p>
+                      </div>
+                    </div>
+                  )}
 
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full bg-gradient-to-r from-indigo-500 to-purple-600 text-white py-4 px-6 rounded-lg font-semibold hover:from-indigo-600 hover:to-purple-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="w-full bg-gradient-to-r from-indigo-500 to-purple-600 text-white py-4 px-6 rounded-lg font-semibold hover:from-indigo-600 hover:to-purple-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
                   >
-                    {isSubmitting ? 'Sending...' : 'Send Message'}
+                    {isSubmitting ? (
+                      <div className="flex items-center justify-center">
+                        <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2"></div>
+                        Sending...
+                      </div>
+                    ) : (
+                      'Send Message'
+                    )}
                   </button>
                 </form>
               </motion.div>
@@ -297,11 +419,11 @@ export const Contact = () => {
                 className="bg-white rounded-2xl shadow-2xl p-8"
               >
                 <h2 className="text-3xl font-bold text-gray-900 mb-8">Visit Our Office</h2>
-                
+
                 {/* Map Placeholder */}
                 <div className="bg-gradient-to-br from-indigo-100 to-purple-100 rounded-xl h-64 mb-8 flex items-center justify-center border border-indigo-200">
                   <div className="text-center text-indigo-700">
-                    <div className="text-5xl mb-4">🗺️</div>
+                    <MapPin className="w-12 h-12 mx-auto mb-4" />
                     <p className="font-semibold text-lg">Interactive Map</p>
                     <p className="text-sm mt-2 max-w-xs">
                       Rohua Appuch, Mushari Rohua, Mushari Farm, Muzaffarpur, Bihar - 842002
@@ -336,14 +458,14 @@ export const Contact = () => {
                     rel="noopener noreferrer"
                     className="flex items-center justify-center w-full bg-green-500 text-white py-4 px-6 rounded-xl font-semibold hover:bg-green-600 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
                   >
-                    <span className="mr-3 text-xl">💬</span>
+                    <MessageCircle className="w-5 h-5 mr-3" />
                     Chat on WhatsApp
                   </a>
                   <a
                     href="tel:+919942824657"
                     className="flex items-center justify-center w-full bg-blue-500 text-white py-4 px-6 rounded-xl font-semibold hover:bg-blue-600 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
                   >
-                    <span className="mr-3 text-xl">📞</span>
+                    <Phone className="w-5 h-5 mr-3" />
                     Call +91 99428 24657
                   </a>
                 </div>

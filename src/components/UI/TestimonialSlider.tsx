@@ -44,8 +44,13 @@ export const TestimonialSlider = () => {
               <div className="mb-6">
                 <img
                   src={testimonials[currentIndex].avatar}
-                  alt={testimonials[currentIndex].name}
+                  alt={`${testimonials[currentIndex].name} - ${testimonials[currentIndex].company}`}
                   className="w-20 h-20 rounded-full mx-auto mb-4 object-cover"
+                  loading="lazy"
+                  onError={(e) => {
+                    // Fallback to a placeholder if image fails to load
+                    e.currentTarget.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAiIGhlaWdodD0iODAiIHZpZXdCb3g9IjAgMCA4MCA4MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjgwIiBoZWlnaHQ9IjgwIiByeD0iNDAiIGZpbGw9IiNmM2Y0ZjYiLz4KPHRleHQgeD0iNDAiIHk9IjQ1IiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMjQiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSIjOWNhM2FmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5DPC90ZXh0Pgo8L3N2Zz4=';
+                  }}
                 />
                 <div className="flex justify-center mb-4">
                   {renderStars(testimonials[currentIndex].rating)}

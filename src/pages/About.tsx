@@ -35,13 +35,25 @@ export const About = () => {
 
   return (
     <>
-      <SEO 
+      <SEO
         title="About Us - Professional Service Company"
         description="Learn about our team of experts specializing in web development, SEO, digital marketing, and AI automation. Discover our mission, values, and commitment to excellence."
       />
+
       <div className="min-h-screen pt-16">
         {/* Hero Section */}
-        <section className="bg-gradient-to-br from-blue-800 to-blue-900 text-white py-16">
+        <section className="relative bg-gradient-to-br from-indigo-900 via-purple-900 to-pink-800 text-white py-24 overflow-hidden">
+
+          {/* Overlay for depth */}
+          <div className="absolute inset-0 bg-black/40"></div>
+
+          {/* Animated glowing circles */}
+          <div className="absolute inset-0 overflow-hidden">
+            <div className="absolute -top-32 -right-32 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl animate-pulse"></div>
+            <div className="absolute -bottom-32 -left-32 w-96 h-96 bg-indigo-500/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
+            <div className="absolute top-1/2 left-1/2 w-72 h-72 bg-pink-500/10 rounded-full blur-2xl animate-ping"></div>
+          </div>
+
           <motion.div
             ref={heroAnimation.ref}
             initial={{ opacity: 0, y: 50 }}
@@ -49,14 +61,19 @@ export const About = () => {
             variants={{
               visible: { opacity: 1, y: 0, transition: { duration: 0.8 } }
             }}
-            className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center"
+            className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center"
           >
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">About ProServices</h1>
-            <p className="text-xl text-blue-200 max-w-3xl mx-auto">
-              We're a team of passionate professionals dedicated to helping businesses thrive in the digital world through innovative solutions and exceptional service.
+            <h1 className="text-4xl md:text-5xl font-bold mb-6 drop-shadow-lg">
+              About ProServices
+            </h1>
+            <p className="text-xl text-gray-200 max-w-3xl mx-auto leading-relaxed">
+              We're a team of passionate professionals dedicated to helping businesses thrive
+              in the digital world through innovative solutions and exceptional service.
             </p>
           </motion.div>
         </section>
+
+
 
         {/* Our Story Section */}
         <section className="py-16 bg-white">

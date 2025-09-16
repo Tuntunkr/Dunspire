@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { Facebook, Twitter, Linkedin, Instagram, Mail, Phone, MapPin } from 'lucide-react';
 
 export const Footer = () => {
   return (
@@ -21,17 +22,17 @@ export const Footer = () => {
               Empowering businesses with cutting-edge digital solutions. From web development to AI automation, we transform ideas into reality.
             </p>
             <div className="flex space-x-4">
-              <a href="#" className="text-gray-300 hover:text-indigo-400 transition-colors text-2xl">
-                📘
+              <a href="#" className="text-gray-300 hover:text-indigo-400 transition-colors">
+                <Facebook className="w-6 h-6" />
               </a>
-              <a href="#" className="text-gray-300 hover:text-indigo-400 transition-colors text-2xl">
-                🐦
+              <a href="#" className="text-gray-300 hover:text-indigo-400 transition-colors">
+                <Twitter className="w-6 h-6" />
               </a>
-              <a href="#" className="text-gray-300 hover:text-indigo-400 transition-colors text-2xl">
-                💼
+              <a href="#" className="text-gray-300 hover:text-indigo-400 transition-colors">
+                <Linkedin className="w-6 h-6" />
               </a>
-              <a href="#" className="text-gray-300 hover:text-indigo-400 transition-colors text-2xl">
-                📷
+              <a href="#" className="text-gray-300 hover:text-indigo-400 transition-colors">
+                <Instagram className="w-6 h-6" />
               </a>
             </div>
           </div>
@@ -43,7 +44,8 @@ export const Footer = () => {
               <li><Link to="/" className="text-gray-300 hover:text-indigo-400 transition-colors">Home</Link></li>
               <li><Link to="/about" className="text-gray-300 hover:text-indigo-400 transition-colors">About</Link></li>
               <li><Link to="/services" className="text-gray-300 hover:text-indigo-400 transition-colors">Services</Link></li>
-              <li><Link to="/services" className="text-gray-300 hover:text-indigo-400 transition-colors">Solutions</Link></li>
+              <li><Link to="/testimonials" className="text-gray-300 hover:text-indigo-400 transition-colors">Testimonials</Link></li>
+              <li><Link to="/blog" className="text-gray-300 hover:text-indigo-400 transition-colors">Blog</Link></li>
               <li><Link to="/contact" className="text-gray-300 hover:text-indigo-400 transition-colors">Contact</Link></li>
             </ul>
           </div>
@@ -66,7 +68,7 @@ export const Footer = () => {
             <h3 className="font-semibold text-lg mb-6 text-indigo-400">Contact Details</h3>
             <div className="space-y-4 text-gray-300">
               <div className="flex items-start space-x-3">
-                <span className="text-indigo-400 mt-1">✉️</span>
+                <Mail className="w-5 h-5 text-indigo-400 mt-1" />
                 <div>
                   <p className="font-medium">Email</p>
                   <a href="mailto:dunbillbusiness@gmail.com" className="hover:text-indigo-400 transition-colors">
@@ -75,7 +77,7 @@ export const Footer = () => {
                 </div>
               </div>
               <div className="flex items-start space-x-3">
-                <span className="text-indigo-400 mt-1">📞</span>
+                <Phone className="w-5 h-5 text-indigo-400 mt-1" />
                 <div>
                   <p className="font-medium">Phone</p>
                   <a href="tel:+919942824657" className="hover:text-indigo-400 transition-colors">
@@ -84,7 +86,7 @@ export const Footer = () => {
                 </div>
               </div>
               <div className="flex items-start space-x-3">
-                <span className="text-indigo-400 mt-1">📍</span>
+                <MapPin className="w-5 h-5 text-indigo-400 mt-1" />
                 <div>
                   <p className="font-medium">Address</p>
                   <p className="text-sm leading-relaxed">
