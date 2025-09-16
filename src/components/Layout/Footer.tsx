@@ -21,7 +21,7 @@ export const Footer = () => {
             <p className="text-gray-300 mb-6 leading-relaxed">
               Empowering businesses with cutting-edge digital solutions. From web development to AI automation, we transform ideas into reality.
             </p>
-            <div className="flex space-x-4">
+            {/* <div className="flex space-x-4">
               <a href="#" className="text-gray-300 hover:text-indigo-400 transition-colors">
                 <Facebook className="w-6 h-6" />
               </a>
@@ -34,7 +34,7 @@ export const Footer = () => {
               <a href="#" className="text-gray-300 hover:text-indigo-400 transition-colors">
                 <Instagram className="w-6 h-6" />
               </a>
-            </div>
+            </div> */}
           </div>
 
           {/* Quick Links */}

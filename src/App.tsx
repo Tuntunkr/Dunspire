@@ -6,7 +6,7 @@ import { ErrorBoundary } from './components/ErrorBoundary';
 // Layout Components
 import { Header } from './components/Layout/Header';
 import { Footer } from './components/Layout/Footer';
-import { FloatingActions } from './components/Layout/FloatingActions';
+// import { FloatingActions } from './components/Layout/FloatingActions';
 
 // Pages
 import { Home } from './pages/Home';
@@ -81,7 +81,7 @@ function App() {
               </Routes>
             </main>
             <Footer />
-            <FloatingActions />
+            {/* <FloatingActions /> */}
           </div>
         </Router>
       </HelmetProvider>

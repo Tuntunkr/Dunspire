@@ -80,8 +80,8 @@ export const Home = () => {
   return (
     <>
      <SEO 
-  title="Dunspire.in - Professional Digital Solutions & Web Development Services"
-  description="Transform your business with Dunspire.in's expert web development, app development, SEO, digital marketing, UI/UX design, AI automation, and cloud solutions."
+  title="Dunspire - Professional Digital Solutions & Web Development Services"
+  description="Transform your business with Dunspire's expert web development, app development, SEO, digital marketing, UI/UX design, AI automation, and cloud solutions."
   keywords="web development, app development, SEO, digital marketing, UI/UX design, AI automation, cloud solutions, India"
  />
 
@@ -115,21 +115,13 @@ export const Home = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.2 }}
       >
-        Transform Your Business with
-        <span className="block bg-gradient-to-r from-yellow-400 via-orange-500 to-pink-500 bg-clip-text text-transparent mt-2">
-          Dunspire.in
+        <span className="block">Your Vision,</span>
+        <span className="block bg-gradient-to-r from-yellow-400 via-orange-500 to-pink-500 bg-clip-text text-transparent mt-2">Our Expertise</span>
+        <span className="block text-lg md:text-2xl font-medium text-gray-200 mt-6">
+          We build digital solutions that grow your business.
         </span>
       </motion.h1>
       
-      {/* Subheading */}
-      <motion.p 
-        className="text-lg md:text-2xl mb-10 text-gray-200 max-w-3xl mx-auto leading-relaxed"
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 0.4 }}
-      >
-        Expert digital solutions including web development, mobile apps, SEO, UI/UX design, AI automation, and cloud services to help your business thrive in the digital age.
-      </motion.p>
       
       {/* CTA Buttons */}
       <motion.div 
@@ -188,7 +180,7 @@ export const Home = () => {
             className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
           >
             <div className="text-center mb-16">
-              <h2 className="text-4xl font-bold text-gray-900 mb-4">Why Choose Dunspire.in?</h2>
+              <h2 className="text-4xl font-bold text-gray-900 mb-4">Why Choose Dunspire?</h2>
               <p className="text-xl text-gray-600 max-w-3xl mx-auto">
                 We deliver exceptional results with cutting-edge technology and proven strategies
               </p>
