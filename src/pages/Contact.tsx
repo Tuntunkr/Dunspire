@@ -80,47 +80,52 @@ export const Contact = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-
+  
     if (!validateForm()) {
       return;
     }
-
+  
     setIsSubmitting(true);
     setSubmitStatus('idle');
-
+  
     try {
-      // Create email content
-      const emailContent = `
-        New Contact Form Submission from dunspire
-        
-        Name: ${formData.name}
-        Email: ${formData.email}
-        Phone: ${formData.phone}
-        Service: ${formData.service}
-        Budget: ${formData.budget}
-        Message: ${formData.message}
-      `;
-
-      // In a real implementation, you would send this to your backend
-      // For now, we'll use mailto as a fallback
-      const mailtoLink = `mailto:dunbillbusiness@gmail.com?subject=New Contact Form Submission&body=${encodeURIComponent(emailContent)}`;
-      window.location.href = mailtoLink;
-
-      setSubmitStatus('success');
-      setFormData({
-        name: '',
-        email: '',
-        phone: '',
-        service: '',
-        budget: '',
-        message: ''
+      const response = await fetch("https://formspree.io/f/xpwjgope", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",  
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          service: formData.service,
+          budget: formData.budget,
+          message: formData.message,
+        }),
       });
+  
+      if (response.ok) {
+        setSubmitStatus('success');
+        setFormData({
+          name: '',
+          email: '',
+          phone: '',
+          service: '',
+          budget: '',
+          message: '',
+        });
+      } else {
+        setSubmitStatus('error');
+      }
     } catch (error) {
+      console.error("Form submission error:", error);
       setSubmitStatus('error');
     } finally {
       setIsSubmitting(false);
     }
   };
+  
 
   const contactMethods = [
     {
