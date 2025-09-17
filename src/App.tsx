@@ -12,9 +12,9 @@ import { Footer } from './components/Layout/Footer';
 import { Home } from './pages/Home';
 import { About } from './pages/About';
 import { Services } from './pages/Services';
-import { Testimonials } from './pages/Testimonials';
+// import { Testimonials } from './pages/Testimonials';
 import { Contact } from './pages/Contact';
-import { Blog } from './pages/Blog';
+// import { Blog } from './pages/Blog';
 
 // Legal Pages
 import { PrivacyPolicy } from './pages/legal/PrivacyPolicy';
@@ -71,9 +71,9 @@ function App() {
                 <Route path="/" element={<Home />} />
                 <Route path="/about" element={<About />} />
                 <Route path="/services" element={<Services />} />
-                <Route path="/testimonials" element={<Testimonials />} />
+                {/* <Route path="/testimonials" element={<Testimonials />} /> */}
                 <Route path="/contact" element={<Contact />} />
-                <Route path="/blog" element={<Blog />} />
+                {/* <Route path="/blog" element={<Blog />} /> */}
                 <Route path="/privacy" element={<PrivacyPolicy />} />
                 <Route path="/terms" element={<TermsConditions />} />
                 <Route path="/refund" element={<RefundPolicy />} />
