@@ -85,16 +85,15 @@ const sections = [
       </p>
     ),
   },
-  {
+   {
     title: "Contact Information",
     content: (
-      <div>
-        <p className="mb-4">For questions about these Terms & Conditions, contact us at:</p>
-        <div className="mt-4 text-gray-700">
-          <p>Email: legal@proservices.com</p>
-          <p>Phone: +1 (234) 567-8900</p>
-          <p>Address: 123 Business Ave, City, ST 12345</p>
-        </div>
+      <div className="bg-gray-50 p-6 rounded-lg">
+        <p><strong>Email:</strong> dunbillbusiness@gmail.com</p>
+        <p><strong>Phone:</strong> +91 99428 24657</p>
+        <p><strong>Address:</strong> Rohua Appuch, Mushari Rohua, Mushari Farm, Muzaffarpur, Bihar, India - 842002</p>
+        <p><strong>Business Hours:</strong> Monday-Friday, 9:00 AM - 7:00 PM IST</p>
+        <p><strong>Response Time:</strong> Within 24-48 hours</p>
       </div>
     ),
   },
